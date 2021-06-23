@@ -31,8 +31,8 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run dgi_code_sniffer
-	    uses: discoverygarden/dgi_code_sniffer@v1
-	    with:
-		    path: ./
+        uses: discoverygarden/dgi_code_sniffer@v1
+        with:
+          path: ./
 ```
 This will run the sniffer each code is pushed to the repo. You should replace the `path` with your `src` directory (or whatever you want to run the sniffer on).
