@@ -27,19 +27,19 @@ runs:
       shell: bash
       
     - name: Register Sniffs
-      run: php ${{ runner.temp }} /phpcs.phar --config-set installed_paths ${{ runner.temp }}/coder_sniffer/coder_sniffer/
+      run: php ${{ runner.temp }}/phpcs.phar --config-set installed_paths ${{ runner.temp }}/coder_sniffer/coder_sniffer/
       shell: bash
     
     - name: Validate Drupal Code
-      run: php ${{ runner.temp }} /phpcs.phar --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
+      run: php ${{ runner.temp }}/phpcs.phar --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
 
     - name: Validate Drupal Best Practices
-      run: php ${{ runner.temp }} /phpcs.phar --standard=DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }}
+      run: php ${{ runner.temp }}/phpcs.phar --standard=DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
 
     - name: Run Static Analysis
-      run: php ${{ runner.temp }} /phpstan.phar analyse $ACTION_PATH
+      run: php ${{ runner.temp }}/phpstan.phar analyse $ACTION_PATH
       shell: bash
       
 branding:
