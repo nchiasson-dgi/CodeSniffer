@@ -15,15 +15,15 @@ runs:
   using: "composite"
   steps:
     - name: Download PHPStan
-      run: wget -P ${{ runner.temp }} https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+      run: wget -Pq ${{ runner.temp }} https://github.com/phpstan/phpstan/raw/master/phpstan.phar
       shell: bash
       
     - name: Download PHPCS
-      run: wget -P ${{ runner.temp }}  https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+      run: wget -Pq ${{ runner.temp }}  https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
       shell: bash
     
     - name: Download Coder
-      run: git clone https://github.com/civicrm/coder.git ${{ runner.temp }}/coder_sniffer
+      run: git clone -q https://github.com/civicrm/coder.git ${{ runner.temp }}/coder_sniffer
       shell: bash
       
     - name: Register Sniffs
