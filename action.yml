@@ -16,24 +16,31 @@ runs:
   steps:
     - name: Download PHPStan
       run: wget -P $RUNNER_TEMP https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+      shell: bash
       
     - name: Download PHPCS
       run: wget -P $RUNNER_TEMP https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+      shell: bash
     
     - name: Download Coder
       run: git clone https://github.com/civicrm/coder.git $RUNNER_TEMP/coder_sniffer
+      shell: bash
       
     - name: Register Sniffs
       run: php $RUNNER_TEMP/phpcs.phar --config-set installed_paths $RUNNER_TEMP/coder_sniffer/coder_sniffer/
+      shell: bash
     
     - name: Validate Drupal Code
       run: php $RUNNER_TEMP/phpcs.phar --standard=Drupal --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+      shell: bash
 
     - name: Validate Drupal Best Practices
       run: php $RUNNER_TEMP/phpcs.phar --standard=DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+      shell: bash
 
     - name: Run Static Analysis
       run: php $RUNNER_TEMP/phpstan.phar analyse $ACTION_PATH
+      shell: bash
       
 branding:
   icon: 'check-square'
