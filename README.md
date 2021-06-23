@@ -35,4 +35,4 @@ jobs:
         with:
           path: ./
 ```
-This will run the sniffer each code is pushed to the repo. You should replace the `path` with your `src` directory (or whatever you want to run the sniffer on).
+This will run the sniffer each time code is pushed to your repo. You should replace the `path` with your `src` directory (or whatever you want to run the sniffer on).
