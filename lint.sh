@@ -10,14 +10,14 @@ composer -q global require dealerdirect/phpcodesniffer-composer-installer
 
 # Register sniffs
 echo "Registering sniffs ..."
-/home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer/
+~/.composer/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer/
 
 # Run linting and static analysis
 echo "Running PHPCS for Drupal standards ..."
-/home/runner/.composer/vendor/bin/phpcs --standard=Drupal --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+~/.composer/vendor/bin/phpcs --standard=Drupal --extensions=$ACTION_EXTENSIONS $ACTION_PATH
 
 echo "Running PHPCS for Drupal best practices ..."
-/home/runner/.composer/vendor/bin/phpcs --standard=DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+~/.composer/vendor/bin/phpcs --standard=DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
   
 echo "Running PHPStan ..."
 php ./phpstan.phar analyse $ACTION_PATH
