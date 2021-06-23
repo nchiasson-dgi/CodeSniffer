@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e #Exit entire script if any command fails
+
 # Download dependencies
 echo "Downloading dependencies ..."
 composer -q global require drupal/coder
