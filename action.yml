@@ -17,7 +17,7 @@ runs:
     - env:
         ACTION_PATH: ${{ inputs.path }}
         ACTION_EXTENSIONS: ${{ inputs.extensions }}
-      run: $${{ github.action_path }}/lint.sh
+      run: ${{ github.action_path }}/lint.sh
       shell: bash
 
       
