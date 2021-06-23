@@ -19,7 +19,7 @@ runs:
       shell: bash
 
     - name: Download PHPStan
-      run: curl -OL https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+      run: curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
       shell: bash
 
     - name: Download Drupal Sniffs
