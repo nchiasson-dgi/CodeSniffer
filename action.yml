@@ -15,31 +15,31 @@ runs:
   using: "composite"
   steps:
     - name: Download PHPStan
-      run: wget -P $RUNNER_TEMP https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+      run: wget -P ${{ runner.temp }} https://github.com/phpstan/phpstan/raw/master/phpstan.phar
       shell: bash
       
     - name: Download PHPCS
-      run: wget -P $RUNNER_TEMP https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+      run: wget -P ${{ runner.temp }}  https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
       shell: bash
     
     - name: Download Coder
-      run: git clone https://github.com/civicrm/coder.git $RUNNER_TEMP/coder_sniffer
+      run: git clone https://github.com/civicrm/coder.git ${{ runner.temp }}/coder_sniffer
       shell: bash
       
     - name: Register Sniffs
-      run: php $RUNNER_TEMP/phpcs.phar --config-set installed_paths $RUNNER_TEMP/coder_sniffer/coder_sniffer/
+      run: php ${{ runner.temp }} /phpcs.phar --config-set installed_paths ${{ runner.temp }}/coder_sniffer/coder_sniffer/
       shell: bash
     
     - name: Validate Drupal Code
-      run: php $RUNNER_TEMP/phpcs.phar --standard=Drupal --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+      run: php ${{ runner.temp }} /phpcs.phar --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
 
     - name: Validate Drupal Best Practices
-      run: php $RUNNER_TEMP/phpcs.phar --standard=DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+      run: php ${{ runner.temp }} /phpcs.phar --standard=DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
 
     - name: Run Static Analysis
-      run: php $RUNNER_TEMP/phpstan.phar analyse $ACTION_PATH
+      run: php ${{ runner.temp }} /phpstan.phar analyse $ACTION_PATH
       shell: bash
       
 branding:
