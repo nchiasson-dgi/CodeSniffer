@@ -4,8 +4,8 @@ A GitHub action for performing static analysis on Drupal code. It runs PHPCS and
 
  
 ## Inputs
-**path:** The path (or paths) to run the analysis on (required).
-**extensions:** A comma separated list of file extensions to test (optional).
+- **path:** The path (or paths) to run the analysis on (required).
+- **extensions:** A comma separated list of file extensions to test (optional).
 
 ## Outputs
 This action does not output any artifacts.
