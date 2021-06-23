@@ -14,32 +14,28 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Download PHPStan
-      run: wget --quiet -P ${{ runner.temp }} https://github.com/phpstan/phpstan/raw/master/phpstan.phar
-      shell: bash
-      
-    - name: Download PHPCS
-      run: wget --quiet -P ${{ runner.temp }}  https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-      shell: bash
-    
     - name: Download Coder
-      run: git clone -q https://github.com/civicrm/coder.git ${{ runner.temp }}/coder_sniffer
-      shell: bash
-      
-    - name: Register Sniffs
-      run: php ${{ runner.temp }}/phpcs.phar --config-set installed_paths ${{ runner.temp }}/coder_sniffer/coder_sniffer/
-      shell: bash
+      run: composer global require drupal/coder
+
+    - name: Download PHPStan
+      run: curl -OL https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+
+    - name: Download Drupal Sniffs
+      run: composer global require dealerdirect/phpcodesniffer-composer-installer
+
+    - name: Register Drupal Sniffs
+      run: /home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer/
     
     - name: Validate Drupal Code
-      run: php ${{ runner.temp }}/phpcs.phar --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
+      run: /home/runner/.composer/vendor/bin/phpcs --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
 
     - name: Validate Drupal Best Practices
-      run: php ${{ runner.temp }}/phpcs.phar --standard=DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }}
+      run: /home/runner/.composer/vendor/bin/phpcs --standard=DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
 
     - name: Run Static Analysis
-      run: php ${{ runner.temp }}/phpstan.phar analyse $ACTION_PATH
+      run: php ./phpstan.phar analyse $ACTION_PATH
       shell: bash
       
 branding:
