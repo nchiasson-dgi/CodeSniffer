@@ -10,7 +10,7 @@ curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
 
 # Register sniffs
 echo "Registering sniffs ..."
-~/.composer/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer/
+~/.composer/vendor/bin/phpcs -q --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer/
 
 # Run linting and static analysis
 echo "Running PHPCS for Drupal standards ..."
