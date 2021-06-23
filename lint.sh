@@ -5,8 +5,8 @@ set -e #Exit entire script if any command fails
 # Download dependencies
 echo "Downloading dependencies ..."
 composer -q global require drupal/coder
-curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
 composer -q global require dealerdirect/phpcodesniffer-composer-installer
+curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
 
 # Register sniffs
 echo "Registering sniffs ..."
