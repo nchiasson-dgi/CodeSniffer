@@ -16,16 +16,20 @@ runs:
   steps:
     - name: Download Coder
       run: composer global require drupal/coder
+      shell: bash
 
     - name: Download PHPStan
       run: curl -OL https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+      shell: bash
 
     - name: Download Drupal Sniffs
       run: composer global require dealerdirect/phpcodesniffer-composer-installer
+      shell: bash
 
     - name: Register Drupal Sniffs
       run: /home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer/
-    
+      shell: bash
+      
     - name: Validate Drupal Code
       run: /home/runner/.composer/vendor/bin/phpcs --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
