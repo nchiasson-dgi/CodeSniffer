@@ -1,0 +1,26 @@
+name: dgi_code_analysis
+author: discoverygarden
+description: Runs static analysis on your PHP code.
+
+inputs:
+  path:
+    description: The path (or paths) to run the analysis on.
+    required: true
+  extensions:
+    description: Comma separated list of file extensions to test.
+    required: false
+    default: php,module,inc,install,test,profile,theme,css,info,md,yml
+
+runs:
+  using: "composite"
+  steps:
+    - env:
+        ACTION_PATH: ${{ inputs.path }}
+        ACTION_EXTENSIONS: ${{ inputs.extensions }}
+      run: ${{ github.action_path }}/lint.sh
+      shell: bash
+
+      
+branding:
+  icon: 'check-square'
+  color: 'blue'
