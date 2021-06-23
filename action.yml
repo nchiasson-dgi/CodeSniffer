@@ -14,11 +14,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Download Dependencies
-      run: |
-      wget -P $RUNNER_TEMP https://github.com/phpstan/phpstan/raw/master/phpstan.phar
-      wget -P $RUNNER_TEMP https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-      git clone https://github.com/civicrm/coder.git $RUNNER_TEMP/coder_sniffer
+    - name: Download PHPStan
+      run: wget -P $RUNNER_TEMP https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+      
+    - name: Download PHPCS
+      run: wget -P $RUNNER_TEMP https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+    
+    - name: Download Coder
+      run: git clone https://github.com/civicrm/coder.git $RUNNER_TEMP/coder_sniffer
       
     - name: Register Sniffs
       run: php $RUNNER_TEMP/phpcs.phar --config-set installed_paths $RUNNER_TEMP/coder_sniffer/coder_sniffer/
