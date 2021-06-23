@@ -15,7 +15,7 @@ runs:
   using: "composite"
   steps:
     - name: Download Coder
-      run: composer global require drupal/coder
+      run: composer -q global require drupal/coder
       shell: bash
 
     - name: Download PHPStan
@@ -23,13 +23,13 @@ runs:
       shell: bash
 
     - name: Download Drupal Sniffs
-      run: composer global require dealerdirect/phpcodesniffer-composer-installer
+      run: composer -q global require dealerdirect/phpcodesniffer-composer-installer
       shell: bash
 
     - name: Register Drupal Sniffs
       run: /home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer/
       shell: bash
-      
+
     - name: Validate Drupal Code
       run: /home/runner/.composer/vendor/bin/phpcs --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
       shell: bash
@@ -39,7 +39,7 @@ runs:
       shell: bash
 
     - name: Run Static Analysis
-      run: php ./phpstan.phar analyse $ACTION_PATH
+      run: php ./phpstan.phar analyse ${{ inputs.path }}
       shell: bash
       
 branding:
