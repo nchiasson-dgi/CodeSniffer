@@ -14,33 +14,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Download Coder
-      run: composer -q global require drupal/coder
+    - env:
+        ACTION_PATH: ${{ inputs.path }}
+        ACTION_EXTENSIONS: ${{ inputs.extensions }}
+      run: $${{ github.action_path }}/lint.sh
       shell: bash
 
-    - name: Download PHPStan
-      run: curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
-      shell: bash
-
-    - name: Download Drupal Sniffs
-      run: composer -q global require dealerdirect/phpcodesniffer-composer-installer
-      shell: bash
-
-    - name: Register Drupal Sniffs
-      run: /home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer/
-      shell: bash
-
-    - name: Validate Drupal Code
-      run: /home/runner/.composer/vendor/bin/phpcs --standard=Drupal --extensions=${{ inputs.extensions }} ${{ inputs.path }}
-      shell: bash
-
-    - name: Validate Drupal Best Practices
-      run: /home/runner/.composer/vendor/bin/phpcs --standard=DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }}
-      shell: bash
-
-    - name: Run Static Analysis
-      run: php ./phpstan.phar analyse ${{ inputs.path }}
-      shell: bash
       
 branding:
   icon: 'check-square'
