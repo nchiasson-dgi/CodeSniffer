@@ -30,8 +30,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
       
-      - name: Run dgi_code_sniffer
-        uses: discoverygarden/dgi_code_sniffer@v1
+      - name: Run CodeSniffer
+        uses: discoverygarden/CodeSniffer@v1
         with:
           path: ./
 ```
