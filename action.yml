@@ -1,4 +1,4 @@
-name: dgi_code_analysis
+name: CodeSniffer
 author: discoverygarden
 description: Runs static analysis on your PHP code.
 

@@ -1,4 +1,4 @@
-# dgi_code_sniffer
+# CodeSniffer
 
 A GitHub action for performing static analysis on Drupal code. It runs PHPCS and PHPStan on the directory you give it.
 
@@ -30,8 +30,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
       
-      - name: Run dgi_code_sniffer
-        uses: discoverygarden/dgi_code_sniffer@v1
+      - name: Run CodeSniffer
+        uses: discoverygarden/CodeSniffer@v1
         with:
           path: ./
 ```
