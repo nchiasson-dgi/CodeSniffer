@@ -1,4 +1,4 @@
-# dgi_code_sniffer
+# CodeSniffer
 
 A GitHub action for performing static analysis on Drupal code. It runs PHPCS and PHPStan on the directory you give it.
 
