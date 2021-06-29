@@ -11,10 +11,6 @@ composer global require sebastian/phpcpd
 # Register sniffs
 echo "Registering sniffs ..."
 ~/.composer/vendor/bin/phpcs -q --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer/
-# ~/.composer/vendor/bin/phpcpd -q --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer/
-
-echo "Running PHPCPD for Drupal version ..."
-~/.composer/vendor/bin/phpcpd --version
 
 # Run linting and static analysis
 echo "Running PHPCS for Drupal standards ..."
