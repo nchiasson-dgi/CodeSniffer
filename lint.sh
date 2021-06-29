@@ -23,4 +23,4 @@ echo "Running PHPCS for Drupal best practices ..."
 ~/.composer/vendor/bin/phpcs --standard=DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
 
 echo "Running PHPCPD for copy/paste detection ..."
-~/.composer/vendor/bin/phpcpd --suffix=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.js,*.css,*.info --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+~/.composer/vendor/bin/phpcpd --suffix=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.js,*.css,*.info $ACTION_PATH
