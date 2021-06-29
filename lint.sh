@@ -6,6 +6,7 @@ set -e #Exit entire script if any command fails
 echo "Downloading dependencies ..."
 composer -q global require drupal/coder
 composer -q global require dealerdirect/phpcodesniffer-composer-installer
+composer -q global require sebastian/phpcpd
 
 # Register sniffs
 echo "Registering sniffs ..."
