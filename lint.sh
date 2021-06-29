@@ -6,11 +6,12 @@ set -e #Exit entire script if any command fails
 echo "Downloading dependencies ..."
 composer -q global require drupal/coder
 composer -q global require dealerdirect/phpcodesniffer-composer-installer
-composer -q global require sebastian/phpcpd
+composer global require sebastian/phpcpd
 
 # Register sniffs
 echo "Registering sniffs ..."
 ~/.composer/vendor/bin/phpcs -q --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer/
+# ~/.composer/vendor/bin/phpcpd -q --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer/
 
 echo "Running PHPCPD for Drupal version ..."
 ~/.composer/vendor/bin/phpcpd --version
