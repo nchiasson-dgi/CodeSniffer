@@ -26,12 +26,6 @@ echo "Running PHPCS for Drupal best practices ..."
 echo "Running PHPCPD for copy/paste detection ..."
 ~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX $ACTION_PATH
 
-echo "See what's here ..."
-ls -al ~/work/_actions/nchiasson-dgi/CodeSniffer/
-
-echo "See what's here ..."
-ls -al ~/work/_actions/nchiasson-dgi/CodeSniffer/v1.1.18/
-
 # Throwing Reflection Errors
 echo "Running PHPStan ..."
-~/.composer/vendor/bin/phpstan analyse $ACTION_PATH -c ~/work/_actions/nchiasson-dgi/CodeSniffer/v1.1.18/phpstan.neon
+~/.composer/vendor/bin/phpstan analyse $ACTION_PATH -c $ACTION_NEON
