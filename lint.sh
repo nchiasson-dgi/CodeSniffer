@@ -7,6 +7,7 @@ echo "Downloading dependencies ..."
 composer -q global require drupal/coder
 composer -q global require dealerdirect/phpcodesniffer-composer-installer
 composer -q global require sebastian/phpcpd
+
 # Trying the composer phpstan
 composer -q global require phpstan/phpstan
 # curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
