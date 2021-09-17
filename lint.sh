@@ -32,4 +32,4 @@ echo "Running PHPCPD for copy/paste detection ..."
 # Throwing Reflection errors, need to specify core directories.
 echo "Running PHPStan ..."
 #php ./phpstan.phar analyse $ACTION_PATH
-~/.composer/vendor/bin/phpstan analyse $ACTION_PATH
+~/.composer/vendor/bin/phpstan analyse $ACTION_PATH -c phpstan.neon
