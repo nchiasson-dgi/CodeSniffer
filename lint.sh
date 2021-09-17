@@ -27,10 +27,10 @@ echo "Running PHPCPD for copy/paste detection ..."
 ~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX $ACTION_PATH
 
 echo "See what's here ..."
-ls -al ~/runners/
+ls -al ~/work/DrupalModule/
 
 echo "See what's here ..."
-ls -al ~/work/
+ls -al ~/work/_actions/
 
 # Throwing Reflection Errors
 echo "Running PHPStan ..."
