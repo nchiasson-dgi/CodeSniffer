@@ -6,6 +6,8 @@ set -e #Exit entire script if any command fails
 echo "Downloading dependencies ..."
 composer -q global require drupal/coder
 composer -q global require dealerdirect/phpcodesniffer-composer-installer
+# Trying the composer phpstan
+composer -q global require phpstan/phpstan
 # curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
 
 # Register sniffs
@@ -26,5 +28,5 @@ echo "Running PHPCPD for copy/paste detection ..."
 ~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX --extensions=$ACTION_EXTENSIONS $ACTION_PATH
 
 # Throwing Reflection errors, need to specify core directories.
-# echo "Running PHPStan ..."
-# php ./phpstan.phar analyse $ACTION_PATH
+echo "Running PHPStan ..."
+php ./phpstan.phar analyse $ACTION_PATH
