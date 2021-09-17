@@ -22,6 +22,7 @@ runs:
         ACTION_PATH: ${{ inputs.path }}
         ACTION_EXTENSIONS: ${{ inputs.extensions }}
         ACTION_SUFFIX: ${{ inputs.suffix }}
+        ACTION_NEON: ${{ github.action_path }}/phpstan.neon
       run: ${{ github.action_path }}/lint.sh
       shell: bash
       
