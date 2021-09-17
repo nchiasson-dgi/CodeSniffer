@@ -29,6 +29,9 @@ echo "Running PHPCS for Drupal best practices ..."
 echo "Running PHPCPD for copy/paste detection ..."
 ~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX $ACTION_PATH
 
+echo "See what's here ..."
+ls -al ~/runner/work/
+
 # Throwing Reflection errors, need to specify core directories.
 echo "Running PHPStan ..."
 #php ./phpstan.phar analyse $ACTION_PATH
