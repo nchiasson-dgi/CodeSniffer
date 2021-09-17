@@ -1,0 +1,5 @@
+parameters:
+	level: 0
+  ignoreErrors:
+    - 'Reflection error: Drupal\Core\Controller\ControllerBase not found.'
+    - 'Reflection error: Drupal\Tests\BrowserTestBase not found.'
