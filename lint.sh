@@ -7,7 +7,7 @@ echo "Downloading dependencies ..."
 composer -q global require drupal/coder
 composer -q global require dealerdirect/phpcodesniffer-composer-installer
 composer -q global require sebastian/phpcpd
-composer global require --dev 'drupal/core-dev:^8'
+composer global require --dev 'drupal/core-dev:^8.9.19' --with-dependencies
 
 # Register sniffs
 echo "Registering sniffs ..."
