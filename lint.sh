@@ -6,7 +6,7 @@ set -e #Exit entire script if any command fails
 echo "Downloading dependencies ..."
 composer -q global require drupal/coder
 composer -q global require dealerdirect/phpcodesniffer-composer-installer
-curl -OLsS https://github.com/phpstan/phpstan/raw/master/phpstan.phar
+composer -q global require sebastian/phpcpd
 
 # Register sniffs
 echo "Registering sniffs ..."
@@ -18,6 +18,6 @@ echo "Running PHPCS for Drupal standards ..."
 
 echo "Running PHPCS for Drupal best practices ..."
 ~/.composer/vendor/bin/phpcs --standard=DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
-  
-echo "Running PHPStan ..."
-php ./phpstan.phar analyse $ACTION_PATH
+
+echo "Running PHPCPD for copy/paste detection ..."
+~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX $ACTION_PATH
