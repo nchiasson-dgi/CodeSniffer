@@ -1,6 +1,6 @@
 # CodeSniffer
 
-A GitHub action for performing static analysis on Drupal code. It runs PHPCS and PHPStan on the directory you give it.
+A GitHub action for performing static analysis on Drupal code. It runs PHPCS and PHPCPD on the directory you give it.
 
  
 ## Inputs
@@ -32,8 +32,8 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run CodeSniffer
-        uses: discoverygarden/CodeSniffer@v1
+        uses: discoverygarden/CodeSniffer@v1.0.0
         with:
           path: ./
 ```
-This will run the sniffer each time code is pushed to your repo. You should replace the `path` with your `src` directory (or whatever you want to run the sniffer on).
+This will run the sniffer each time code is pushed to your repo.
