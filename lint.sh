@@ -14,7 +14,7 @@ echo "Registering sniffs ..."
 
 # Run linting and static analysis
 echo "Running PHPCS for Drupal standards ..."
-~/.composer/vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+~/.composer/vendor/bin/phpcs -s --standard=Drupal,DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
 
 echo "Running PHPCPD for copy/paste detection ..."
 ~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX $ACTION_PATH
