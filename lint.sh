@@ -19,5 +19,8 @@ echo "Running PHPCS for Drupal standards ..."
 echo "Running PHPCS for Drupal best practices ..."
 ~/.composer/vendor/bin/phpcs --standard=DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
 
+echo "Running PHPCS Generic sniffs ..."
+~/.composer/vendor/bin/phpcs --standard=Generic --sniffs=Generic.PHP.Syntax --extensions=$ACTION_LINT $ACTION_PATH
+
 echo "Running PHPCPD for copy/paste detection ..."
 ~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX $ACTION_PATH
