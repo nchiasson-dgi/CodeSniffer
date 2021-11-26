@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run CodeSniffer
-        uses: discoverygarden/CodeSniffer@v1.0.0
+        uses: discoverygarden/CodeSniffer@v1
         with:
           path: ./
 ```
