@@ -1,20 +1,25 @@
-name: Automatic Versioning
+name: Auto Semver
 on:
-  pull_request:
+  pull_request_target:
     types: closed
     branches:
       - main
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  update:
     if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
     steps:
-      - id: bump
-        uses: zwaldowski/match-label-action@v2
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Checkout Auto Semver Action Repo
+        uses: actions/checkout@v2
         with:
-          allowed: major,minor,patch
-      - uses: zwaldowski/semver-release-action@v2
+          repository: discoverygarden/auto-semver
+          ref: v1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: .github/actions/auto-semver
+      - name: Run Auto Semver
+        uses: ./.github/actions/auto-semver
         with:
-          bump: ${{ steps.bump.outputs.match }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           prefix: v
