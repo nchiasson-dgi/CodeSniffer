@@ -14,7 +14,7 @@ echo "Registering sniffs ..."
 
 # Run linting and static analysis
 echo "Running PHPCS for Drupal standards ..."
-~/.composer/vendor/bin/phpcs -s --standard=Drupal,DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH
+~/.composer/vendor/bin/phpcs -s --standard=Drupal,DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH --ignore=*.md
 
 echo "Running PHPCS Generic sniffs ..."
 ~/.composer/vendor/bin/phpcs --standard=Generic --sniffs=Generic.PHP.Syntax --extensions=$ACTION_LINT $ACTION_PATH
