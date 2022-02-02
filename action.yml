@@ -21,7 +21,7 @@ inputs:
 
 runs:
   using: "composite"
-   steps:
+  steps:
     - Download Dependencies:
       run: |
         echo "Downloading dependencies ..."
