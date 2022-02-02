@@ -22,14 +22,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - Download Dependencies:
+    - name: Download Dependencies
       run: |
         echo "Downloading dependencies ..."
         composer global require drupal/coder
         composer global require dealerdirect/phpcodesniffer-composer-installer
         composer global require sebastian/phpcpd
         echo "~/.composer/vendor/bin" >> $GITHUB_PATH
-    - Run Lint:
+    - name: Run Lint
       run: |
         echo "::group::PHPCS for Drupal standards"
         phpcs -s --standard=Drupal,DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }} --ignore=*.md
