@@ -21,12 +21,7 @@ inputs:
 
 runs:
   using: "composite"
-  env:
-    ACTION_PATH: ${{ inputs.path }}
-    ACTION_EXTENSIONS: ${{ inputs.extensions }}
-    ACTION_SUFFIX: ${{ inputs.suffix }}
-    ACTION_LINT: ${{ inputs.lint  }}
-  steps:
+   steps:
     - Download Dependencies:
       run: |
         echo "Downloading dependencies ..."
@@ -35,6 +30,12 @@ runs:
         composer global require sebastian/phpcpd
         echo "~/.composer/vendor/bin" >> $GITHUB_PATH
     - Run Lint:
+      env:
+        ACTION_PATH: ${{ inputs.path }}
+        ACTION_PATH: ${{ inputs.path }}
+        ACTION_EXTENSIONS: ${{ inputs.extensions }}
+        ACTION_SUFFIX: ${{ inputs.suffix }}
+        ACTION_LINT: ${{ inputs.lint }}
       run: |
         echo "::group::PHPCS for Drupal standards"
         ~/.composer/vendor/bin/phpcs -s --standard=Drupal,DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH --ignore=*.md
