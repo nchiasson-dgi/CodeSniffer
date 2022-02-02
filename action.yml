@@ -29,6 +29,7 @@ runs:
         composer global require dealerdirect/phpcodesniffer-composer-installer
         composer global require sebastian/phpcpd
         echo "~/.composer/vendor/bin" >> $GITHUB_PATH
+      shell: bash
     - name: Run Lint
       run: |
         echo "::group::PHPCS for Drupal standards"
