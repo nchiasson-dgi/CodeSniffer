@@ -21,13 +21,30 @@ inputs:
 
 runs:
   using: "composite"
-  steps:
-    - env:
+    env:
         ACTION_PATH: ${{ inputs.path }}
         ACTION_EXTENSIONS: ${{ inputs.extensions }}
         ACTION_SUFFIX: ${{ inputs.suffix }}
         ACTION_LINT: ${{ inputs.lint  }}
-      run: ${{ github.action_path }}/lint.sh
+  steps:
+    - Download Dependencies:
+      run: |
+         echo "Downloading dependencies ..."
+         composer global require drupal/coder
+         composer global require dealerdirect/phpcodesniffer-composer-installer
+         composer global require sebastian/phpcpd
+         echo "~/.composer/vendor/bin" >> $GITHUB_PATH
+    - Run Lint:
+      run: |
+         echo "::group::PHPCS for Drupal standards"
+         ~/.composer/vendor/bin/phpcs -s --standard=Drupal,DrupalPractice --extensions=$ACTION_EXTENSIONS $ACTION_PATH --ignore=*.md
+         echo "::endgroup::"
+         echo "::group::PHPCS Generic sniffs"
+         ~/.composer/vendor/bin/phpcs --standard=Generic --sniffs=Generic.PHP.Syntax --extensions=$ACTION_LINT $ACTION_PATH
+         echo "::endgroup::"
+         echo "::group::PHPCPD for copy/paste detection"
+         ~/.composer/vendor/bin/phpcpd --suffix=$ACTION_SUFFIX $ACTION_PATH
+         echo "::endgroup::"
       shell: bash
 
 branding:
