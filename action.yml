@@ -26,13 +26,16 @@ runs:
     - name: Download Dependencies
       run: |
         echo "Downloading dependencies ..."
+        echo "::group::Downloading Dependencies ..."
         composer global require drupal/coder
         composer global require dealerdirect/phpcodesniffer-composer-installer
         composer global require sebastian/phpcpd
         echo "~/.composer/vendor/bin" >> $GITHUB_PATH
+        echo "::endgroup::"
       shell: bash
     - name: Run Lint
       run: |
+        echo "Running PHPCS and PHPCPD ..."
         echo "::group::PHPCS for Drupal standards"
         phpcs -s --standard=Drupal,DrupalPractice --extensions=${{ inputs.extensions }} ${{ inputs.path }} --ignore=*.md
         echo "::endgroup::"
